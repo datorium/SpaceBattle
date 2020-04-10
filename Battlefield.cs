@@ -13,6 +13,7 @@ namespace SpaceBattle
     public partial class Battlefield : Form
     {
         Spaceship spaceship;
+        Bullet bullet;
         
         public Battlefield()
         {
@@ -23,9 +24,16 @@ namespace SpaceBattle
         private void InitializeBattlefield()
         {
             spaceship = new Spaceship();
-            spaceship.Left = 100;
-            spaceship.Top = 200;
+            spaceship.Left = ClientRectangle.Width - (ClientRectangle.Width / 2 + spaceship.Width / 2);
+            spaceship.Top = 300;
             this.Controls.Add(spaceship);
+        }
+
+        private void FireBullet()
+        {
+            bullet = new Bullet();
+            bullet.Top = spaceship.Top;
+            bullet.Left = spaceship.Left + (spaceship.Width / 2 - bullet.Width / 2);
         }
     }
 }
