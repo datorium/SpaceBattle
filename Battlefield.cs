@@ -34,6 +34,24 @@ namespace SpaceBattle
             bullet = new Bullet();
             bullet.Top = spaceship.Top;
             bullet.Left = spaceship.Left + (spaceship.Width / 2 - bullet.Width / 2);
+            this.Controls.Add(bullet);
+            bullet.BringToFront();
+        }
+
+        private void Battlefield_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Space)
+            {
+                FireBullet();
+            }
+        }
+
+        private void Battlefield_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                FireBullet();
+            }
         }
     }
 }
