@@ -44,6 +44,14 @@ namespace SpaceBattle
             {
                 FireBullet();
             }
+            else if(e.KeyCode == Keys.A)
+            {
+                spaceship.Left -= 10;
+            }
+            else if(e.KeyCode == Keys.D)
+            {
+                spaceship.Left += 10;
+            }
         }
 
         private void Battlefield_MouseDown(object sender, MouseEventArgs e)
