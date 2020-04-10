@@ -12,9 +12,20 @@ namespace SpaceBattle
 {
     public partial class Battlefield : Form
     {
+        Spaceship spaceship;
+        
         public Battlefield()
         {
             InitializeComponent();
+            InitializeBattlefield();
+        }
+
+        private void InitializeBattlefield()
+        {
+            spaceship = new Spaceship();
+            spaceship.Left = 100;
+            spaceship.Top = 200;
+            this.Controls.Add(spaceship);
         }
     }
 }
