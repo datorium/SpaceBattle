@@ -39,7 +39,13 @@ namespace SpaceBattle
 
         private void TimerAnimate_Tick(object sender, EventArgs e)
         {
-
+            string imageName = "rocket_" + engineStatus + "_" + imageCount;
+            this.Image = (Image)Properties.Resources.ResourceManager.GetObject(imageName);
+            imageCount += 1;
+            if(imageCount > 4)
+            {
+                imageCount = 1;
+            }
         }
     }
 }
