@@ -46,16 +46,15 @@ namespace SpaceBattle
 
         private void MainTimer_Tick(object sender, EventArgs e)
         {
-            if (moveLeft)
+            if (moveLeft && spaceship.Left > 0)
             {
                 spaceship.Left -= 2;
             }
-            if (moveRight)
+            if (moveRight && spaceship.Left + spaceship.Width < ClientRectangle.Width)
             {
                 spaceship.Left += 2;
             }
         }
-
 
         private void FireBullet()
         {
