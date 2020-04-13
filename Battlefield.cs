@@ -32,7 +32,7 @@ namespace SpaceBattle
         {
             spaceship = new Spaceship();
             spaceship.Left = ClientRectangle.Width - (ClientRectangle.Width / 2 + spaceship.Width / 2);
-            spaceship.Top = 300;
+            spaceship.Top = ClientRectangle.Height - (spaceship.Height + 20);
             this.Controls.Add(spaceship);
         }
 
@@ -79,6 +79,18 @@ namespace SpaceBattle
             else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
             {
                 moveRight = true;
+            }
+            else if (e.KeyCode == Keys.O)
+            {
+                if(spaceship.EngineStatus == "off")
+                {
+                    spaceship.EngineOn();
+                }
+                else if (spaceship.EngineStatus == "on")
+                {
+                    spaceship.EngineOff();
+                }
+                
             }
         }
 

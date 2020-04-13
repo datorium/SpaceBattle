@@ -11,9 +11,11 @@ namespace SpaceBattle
     class Spaceship : PictureBox
     {
         private int imageCount = 1;
-        private string engineStatus = "off";
+        //private string engineStatus = "off";
         private Timer timerAnimate;
-        
+
+        public string EngineStatus { get; set; } = "off";
+
         public Spaceship()
         {
             InitializeSpaceship();
@@ -33,13 +35,13 @@ namespace SpaceBattle
         {
             timerAnimate = new Timer();
             timerAnimate.Tick += new EventHandler(TimerAnimate_Tick);
-            timerAnimate.Interval = 100;
+            timerAnimate.Interval = 50;
             timerAnimate.Start();
         }
 
         private void TimerAnimate_Tick(object sender, EventArgs e)
         {
-            string imageName = "rocket_" + engineStatus + "_" + imageCount;
+            string imageName = "rocket_" + EngineStatus + "_" + imageCount;
             this.Image = (Image)Properties.Resources.ResourceManager.GetObject(imageName);
             imageCount += 1;
             if(imageCount > 4)
@@ -50,12 +52,12 @@ namespace SpaceBattle
 
         public void EngineOn()
         {
-            engineStatus = "on";
+            EngineStatus = "on";
         }
 
         public void EngineOff()
         {
-            engineStatus = "off";
+            EngineStatus = "off";
         }
     }
 }
