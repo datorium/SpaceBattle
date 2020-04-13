@@ -12,13 +12,20 @@ namespace SpaceBattle
 {
     public partial class Battlefield : Form
     {
-        Spaceship spaceship;
-        Bullet bullet;
+        bool moveLeft = false;
+        bool moveRight = false;
+        bool gameOver = false;
+        bool bulletFired = false;
+
+        Spaceship spaceship = null;
+        Bullet bullet = null;
+        Timer mainTimer = null;
         
         public Battlefield()
         {
             InitializeComponent();
             InitializeBattlefield();
+            InitializeMainTimer();
         }
 
         private void InitializeBattlefield()
@@ -28,6 +35,21 @@ namespace SpaceBattle
             spaceship.Top = 300;
             this.Controls.Add(spaceship);
         }
+
+        private void InitializeMainTimer()
+        {
+            mainTimer = new Timer();
+            mainTimer.Tick += new EventHandler(MainTimer_Tick);
+            mainTimer.Interval = 10;
+            mainTimer.Start();
+        }
+
+        private void MainTimer_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         private void FireBullet()
         {
