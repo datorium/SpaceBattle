@@ -12,12 +12,13 @@ namespace SpaceBattle
     {
         private Timer timerBulletMove;
         int verVelocity = 0;
-        int horVelocity = 0;       
-        public int Step { get; set; } = 5;
+        int horVelocity = 0;
+        private int bulletStep;       
 
 
-        public Bullet()
+        public Bullet(int speed)
         {
+            bulletStep = speed;
             InitializeBullet();
             InitializeTimerBulletMove();
         }
@@ -27,7 +28,7 @@ namespace SpaceBattle
             timerBulletMove = new Timer();
             timerBulletMove.Interval = 20;
             timerBulletMove.Tick += new EventHandler(TimerBulletMove_Tick);
-            verVelocity = -Step;
+            verVelocity = -bulletStep;
             timerBulletMove.Start();
         }
 

@@ -58,7 +58,14 @@ namespace SpaceBattle
 
         private void FireBullet()
         {
-            bullet = new Bullet();
+            if(spaceship.EngineStatus == "off")
+            {
+                bullet = new Bullet(5);
+            }
+            else if (spaceship.EngineStatus == "on")
+            {
+                bullet = new Bullet(10);
+            }            
             bullet.Top = spaceship.Top;
             bullet.Left = spaceship.Left + (spaceship.Width / 2 - bullet.Width / 2);
             this.Controls.Add(bullet);
