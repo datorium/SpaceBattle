@@ -20,7 +20,7 @@ namespace SpaceBattle
         Spaceship spaceship = null;
         Bullet bullet = null;
         Timer mainTimer = null;
-        
+
         public Battlefield()
         {
             InitializeComponent();
@@ -46,9 +46,15 @@ namespace SpaceBattle
 
         private void MainTimer_Tick(object sender, EventArgs e)
         {
-
+            if (moveLeft)
+            {
+                spaceship.Left -= 2;
+            }
+            if (moveRight)
+            {
+                spaceship.Left += 2;
+            }
         }
-
 
 
         private void FireBullet()
@@ -62,17 +68,18 @@ namespace SpaceBattle
 
         private void Battlefield_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.Space && !bulletFired)
             {
                 FireBullet();
+                bulletFired = true;
             }
-            else if(e.KeyCode == Keys.A)
+            else if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left)
             {
-                spaceship.Left -= 10;
+                moveLeft = true;
             }
-            else if(e.KeyCode == Keys.D)
+            else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
             {
-                spaceship.Left += 10;
+                moveRight = true;
             }
         }
 
@@ -81,6 +88,22 @@ namespace SpaceBattle
             if(e.Button == MouseButtons.Left)
             {
                 FireBullet();
+            }
+        }
+
+        private void Battlefield_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Space)
+            {
+                bulletFired = false;
+            }
+            else if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left)
+            {
+                moveLeft = false;
+            }
+            else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
+            {
+                moveRight = false;
             }
         }
     }
