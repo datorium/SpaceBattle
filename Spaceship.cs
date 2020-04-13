@@ -47,5 +47,15 @@ namespace SpaceBattle
                 imageCount = 1;
             }
         }
+
+        public void EngineOn()
+        {
+            engineStatus = "on";
+        }
+
+        public void EngineOff()
+        {
+            engineStatus = "off";
+        }
     }
 }
