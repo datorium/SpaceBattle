@@ -29,9 +29,10 @@ namespace SpaceBattle
 
         private void InitializeBattlefield()
         {
+            this.BackColor = Color.Black;
             spaceship = new Spaceship();
             spaceship.Left = ClientRectangle.Width - (ClientRectangle.Width / 2 + spaceship.Width / 2);
-            spaceship.Top = 300;
+            spaceship.Top = ClientRectangle.Height - spaceship.Height;
             this.Controls.Add(spaceship);
         }
 
@@ -78,6 +79,17 @@ namespace SpaceBattle
             else if(e.KeyCode == Keys.D)
             {
                 moveRight = true;
+            }
+            else if (e.KeyCode == Keys.E)
+            {
+                if(spaceship.EngineState == "off")
+                {
+                    spaceship.EngineOn();
+                }
+                else if(spaceship.EngineState == "on")
+                {
+                    spaceship.EngineOff();
+                }                
             }
         }
 

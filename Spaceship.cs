@@ -25,8 +25,8 @@ namespace SpaceBattle
         private void InitializeSpaceship()
         {
             this.BackColor = Color.Transparent;
-            this.Height = 80;
-            this.Width = 40;
+            this.Height = 120;
+            this.Width = 60;
             this.SizeMode = PictureBoxSizeMode.StretchImage;
             //this.Image = Properties.Resources.rocket_off_1;
         }
@@ -48,6 +48,15 @@ namespace SpaceBattle
             {
                 imageCount = 1;
             }
+        }
+
+        public void EngineOn()
+        {
+            EngineState = "on";
+        }
+        public void EngineOff()
+        {
+            EngineState = "off";
         }
     }
 }
