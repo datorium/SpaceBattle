@@ -55,6 +55,9 @@
     <Compile Include="Bullet.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Enemy.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spaceship.cs">
