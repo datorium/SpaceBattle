@@ -50,5 +50,10 @@ namespace SpaceBattle
             this.Width = 20;
         }
 
+        public void Explode()
+        {
+
+        }
+
     }
 }
