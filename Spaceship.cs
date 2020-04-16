@@ -72,10 +72,11 @@ namespace SpaceBattle
             {
                 bullet = new Bullet(10);
             }
+            bullet.Tag = "bullet";
             bullet.Top = this.Top;
             bullet.Left = this.Left + (this.Width / 2 - bullet.Width / 2);
             battlefield.Controls.Add(bullet);
-            bullet.BringToFront();
+            bullet.BringToFront();  
         }
     }
 }

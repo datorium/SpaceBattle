@@ -14,10 +14,12 @@ namespace SpaceBattle
         int verVelocity = 0;
         int horVelocity = 0;
         private int enemyStep;
+        Battlefield battlefield;
 
-        public Enemy(int speed)
+        public Enemy(int speed, Battlefield bf)
         {
             enemyStep = speed;
+            battlefield = bf;
             InitializeEnemy();
             InitializeTimerEnemyMove();
         }
@@ -35,7 +37,7 @@ namespace SpaceBattle
         {
             this.Top += verVelocity;
             this.Left += horVelocity;
-            if (this.Top > ClientRectangle.Height)
+            if (this.Top > battlefield.ClientRectangle.Height)
             {
                 this.Dispose();
             }
@@ -43,7 +45,7 @@ namespace SpaceBattle
 
         private void InitializeEnemy()
         {
-            this.BackColor = Color.Purple;
+            this.BackColor = Color.Pink;
             this.Height = 20;
             this.Width = 20;
         }

@@ -17,15 +17,19 @@ namespace SpaceBattle
         bool gameOver = false;
         bool bulletFired = false;
 
+        Random rand = new Random();
         Spaceship spaceship = null;
         Bullet bullet = null;
+        Enemy enemy = null;
         Timer mainTimer = null;
+        Timer enemyTimer = null;
 
         public Battlefield()
         {
             InitializeComponent();
             InitializeBattlefield();
             InitializeMainTimer();
+            InitializeEnemyTimer();
         }
 
         private void InitializeBattlefield()
@@ -56,6 +60,24 @@ namespace SpaceBattle
                 spaceship.Left += 2;
             }
         }
+
+        private  void InitializeEnemyTimer()
+        {
+            enemyTimer = new Timer();
+            enemyTimer.Tick += new EventHandler(EnemyTimer_Tick);
+            enemyTimer.Interval = 2000;
+            enemyTimer.Start();
+        }
+
+        private void EnemyTimer_Tick(object sender, EventArgs e)
+        {
+            enemy = new Enemy(rand.Next(1, 6), this);
+            enemy.Tag = "enemy";
+            enemy.Left = rand.Next(0, ClientRectangle.Width - enemy.Width);
+            enemy.Top = 0;
+            this.Controls.Add(enemy);
+        }
+
 
         private void Battlefield_KeyDown(object sender, KeyEventArgs e)
         {
@@ -105,6 +127,17 @@ namespace SpaceBattle
             else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
             {
                 moveRight = false;
+            }
+        }
+
+        private void EnemyBulletCollision()
+        {
+            foreach(Control c in this.Controls)
+            {
+                if(c.Tag == "enemy")
+                {
+
+                }
             }
         }
     }
