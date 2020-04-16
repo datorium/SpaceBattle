@@ -10,7 +10,7 @@ namespace SpaceBattle
 {
     class Enemy : PictureBox
     {
-        private Timer timerBulletMove;
+        private Timer timerEnemyMove;
         int verVelocity = 0;
         int horVelocity = 0;
         private int enemyStep;
@@ -18,34 +18,34 @@ namespace SpaceBattle
         public Enemy(int speed)
         {
             enemyStep = speed;
-            InitializeBullet();
-            InitializeTimerBulletMove();
+            InitializeEnemy();
+            InitializeTimerEnemyMove();
         }
 
-        private void InitializeTimerBulletMove()
+        private void InitializeTimerEnemyMove()
         {
-            timerBulletMove = new Timer();
-            timerBulletMove.Interval = 20;
-            timerBulletMove.Tick += new EventHandler(TimerBulletMove_Tick);
-            verVelocity = -enemyStep;
-            timerBulletMove.Start();
+            timerEnemyMove = new Timer();
+            timerEnemyMove.Interval = 20;
+            timerEnemyMove.Tick += new EventHandler(TimerEnemyMove_Tick);
+            verVelocity = enemyStep;
+            timerEnemyMove.Start();
         }
 
-        private void TimerBulletMove_Tick(object sender, EventArgs e)
+        private void TimerEnemyMove_Tick(object sender, EventArgs e)
         {
             this.Top += verVelocity;
             this.Left += horVelocity;
-            if (this.Top + this.Height < 0)
+            if (this.Top > ClientRectangle.Height)
             {
                 this.Dispose();
             }
         }
 
-        private void InitializeBullet()
+        private void InitializeEnemy()
         {
-            this.BackColor = Color.Red;
-            this.Height = 10;
-            this.Width = 2;
+            this.BackColor = Color.Purple;
+            this.Height = 20;
+            this.Width = 20;
         }
 
     }
