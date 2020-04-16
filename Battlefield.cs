@@ -30,6 +30,7 @@ namespace SpaceBattle
 
         private void InitializeBattlefield()
         {
+            this.BackColor = Color.Black;
             spaceship = new Spaceship();
             spaceship.Left = ClientRectangle.Width - (ClientRectangle.Width / 2 + spaceship.Width / 2);
             spaceship.Top = ClientRectangle.Height - (spaceship.Height + 20);
@@ -56,27 +57,11 @@ namespace SpaceBattle
             }
         }
 
-        private void FireBullet()
-        {
-            if(spaceship.EngineStatus == "off")
-            {
-                bullet = new Bullet(5);
-            }
-            else if (spaceship.EngineStatus == "on")
-            {
-                bullet = new Bullet(10);
-            }            
-            bullet.Top = spaceship.Top;
-            bullet.Left = spaceship.Left + (spaceship.Width / 2 - bullet.Width / 2);
-            this.Controls.Add(bullet);
-            bullet.BringToFront();
-        }
-
         private void Battlefield_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space && !bulletFired)
             {
-                FireBullet();
+                spaceship.Fire(this);
                 bulletFired = true;
             }
             else if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left)
@@ -96,16 +81,14 @@ namespace SpaceBattle
                 else if (spaceship.EngineStatus == "on")
                 {
                     spaceship.EngineOff();
-                }
-                
+                }                
             }
         }
-
         private void Battlefield_MouseDown(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
             {
-                FireBullet();
+                spaceship.Fire(this);
             }
         }
 

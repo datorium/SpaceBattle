@@ -13,6 +13,7 @@ namespace SpaceBattle
         private int imageCount = 1;
         //private string engineStatus = "off";
         private Timer timerAnimate;
+        private Bullet bullet;
 
         public string EngineStatus { get; set; } = "off";
 
@@ -58,6 +59,23 @@ namespace SpaceBattle
         public void EngineOff()
         {
             EngineStatus = "off";
+        }
+
+        public void Fire(Battlefield battlefield)
+        {
+            
+            if (this.EngineStatus == "off")
+            {
+                bullet = new Bullet(5);
+            }
+            else if (this.EngineStatus == "on")
+            {
+                bullet = new Bullet(10);
+            }
+            bullet.Top = this.Top;
+            bullet.Left = this.Left + (this.Width / 2 - bullet.Width / 2);
+            battlefield.Controls.Add(bullet);
+            bullet.BringToFront();
         }
     }
 }
