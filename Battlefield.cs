@@ -19,12 +19,15 @@ namespace SpaceBattle
         private Spaceship spaceship = null;
         //private Bullet bullet = null;
         private Timer mainTimer = null;
+        private Timer enemyTimer = null;
+        private Random rand = new Random();
         
         public Battlefield()
         {
             InitializeComponent();
             InitializeBattlefield();
             InitializeMainTimer();
+            InitializeEnemyTimer();
         }
 
         private void InitializeBattlefield()
@@ -54,6 +57,20 @@ namespace SpaceBattle
             {
                 spaceship.Left += 2;
             }
+        }
+
+        private void InitializeEnemyTimer()
+        {
+            enemyTimer = new Timer();
+            enemyTimer.Tick += new EventHandler(EnemyTimer_Tick);
+            enemyTimer.Interval = 2000;
+            enemyTimer.Start();
+        }
+
+        private void EnemyTimer_Tick(object sender, EventArgs e)
+        {
+            Enemy enemy = new Enemy(rand.Next(1,6), this);
+            this.Controls.Add(enemy);
         }
 
         //private void FireBullet()
