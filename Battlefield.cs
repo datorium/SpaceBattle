@@ -57,6 +57,8 @@ namespace SpaceBattle
             {
                 spaceship.Left += 2;
             }
+            EnemyBulletCollision();
+            EnemySpaceshipCollison();
         }
 
         private void InitializeEnemyTimer()
@@ -76,12 +78,39 @@ namespace SpaceBattle
 
         private void EnemyBulletCollision()
         {
-
+            foreach(Control c in this.Controls)
+            {
+                if((string)c.Tag == "enemy")
+                {
+                    foreach(Control b in this.Controls)
+                    {
+                        if((string)b.Tag == "bullet")
+                        {
+                            if (c.Bounds.IntersectsWith(b.Bounds))
+                            {
+                                c.Dispose();
+                                b.Dispose();
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void EnemySpaceshipCollison()
         {
-            GameOver();
+            foreach(Control c in this.Controls)
+            {
+                if((string)c.Tag == "enemy")
+                {
+                    if (c.Bounds.IntersectsWith(spaceship.Bounds))
+                    {
+                        c.Dispose();
+                        spaceship.Dispose();
+                        GameOver();
+                    }
+                }
+            }
         }
 
         private void GameOver()

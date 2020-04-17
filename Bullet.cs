@@ -45,6 +45,7 @@ namespace SpaceBattle
             this.BackColor = Color.Red;
             this.Height = 10;
             this.Width = 2;
+            this.Tag = "bullet";
         }
     }
 }
