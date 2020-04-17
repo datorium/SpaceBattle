@@ -56,20 +56,20 @@ namespace SpaceBattle
             }
         }
 
-        private void FireBullet()
-        {
-            bullet = new Bullet();
-            bullet.Top = spaceship.Top;
-            bullet.Left = spaceship.Left + (spaceship.Width / 2 - bullet.Width / 2);
-            this.Controls.Add(bullet);
-            bullet.BringToFront();
-        }
+        //private void FireBullet()
+        //{
+        //    bullet = new Bullet();
+        //    bullet.Top = spaceship.Top;
+        //    bullet.Left = spaceship.Left + (spaceship.Width / 2 - bullet.Width / 2);
+        //    this.Controls.Add(bullet);
+        //    bullet.BringToFront();
+        //}
 
         private void Battlefield_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Space && !bulletFired)
             {
-                FireBullet();
+                spaceship.Fire(this);
                 bulletFired = true;
             }
             else if(e.KeyCode == Keys.A)
@@ -97,7 +97,7 @@ namespace SpaceBattle
         {
             if(e.Button == MouseButtons.Left)
             {
-                FireBullet();
+                spaceship.Fire(this);
             }
         }
 

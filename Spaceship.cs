@@ -14,6 +14,8 @@ namespace SpaceBattle
         private int imageCount = 1;
         private string imageName;
 
+        private Bullet bullet = null;
+
         public string EngineState { get; set; } = "off";
 
         public Spaceship()
@@ -54,9 +56,19 @@ namespace SpaceBattle
         {
             EngineState = "on";
         }
+        
         public void EngineOff()
         {
             EngineState = "off";
+        }
+        
+        public void Fire(Battlefield battlefield)
+        {
+            bullet = new Bullet();
+            bullet.Top = this.Top;
+            bullet.Left = this.Left + (this.Width / 2 - bullet.Width / 2);
+            battlefield.Controls.Add(bullet);
+            bullet.BringToFront();
         }
     }
 }
