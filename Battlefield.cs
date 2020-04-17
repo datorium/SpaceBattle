@@ -58,7 +58,7 @@ namespace SpaceBattle
                 spaceship.Left += 2;
             }
             EnemyBulletCollision();
-            EnemySpaceshipCollison();
+            EnemySpaceshipCollision();
         }
 
         private void InitializeEnemyTimer()
@@ -97,7 +97,7 @@ namespace SpaceBattle
             }
         }
 
-        private void EnemySpaceshipCollison()
+        private void EnemySpaceshipCollision()
         {
             foreach(Control c in this.Controls)
             {
