@@ -17,7 +17,7 @@ namespace SpaceBattle
         private bool bulletFired = false;
 
         private Spaceship spaceship = null;
-        private Bullet bullet = null;
+        //private Bullet bullet = null;
         private Timer mainTimer = null;
         
         public Battlefield()
