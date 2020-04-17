@@ -48,6 +48,7 @@ namespace SpaceBattle
             this.BackColor = Color.Pink;
             this.Height = 20;
             this.Width = 20;
+            this.Tag = "enemy";
         }
     }
 }

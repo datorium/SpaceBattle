@@ -70,7 +70,24 @@ namespace SpaceBattle
         private void EnemyTimer_Tick(object sender, EventArgs e)
         {
             Enemy enemy = new Enemy(rand.Next(1,6), this);
+            enemy.Left = rand.Next(0, this.ClientRectangle.Width - enemy.Width);
             this.Controls.Add(enemy);
+        }
+
+        private void EnemyBulletCollision()
+        {
+
+        }
+
+        private void EnemySpaceshipCollison()
+        {
+            GameOver();
+        }
+
+        private void GameOver()
+        {
+            mainTimer.Stop();
+            MessageBox.Show("Game Over");
         }
 
         //private void FireBullet()
